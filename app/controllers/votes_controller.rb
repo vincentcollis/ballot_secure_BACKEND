@@ -10,7 +10,8 @@ class VotesController < ApplicationController
 
   # GET /votes/1
   def show
-    render json: @vote
+    serializer = VoteSerializer.new(@vote)
+    render json: serializer.serializable_hash
   end
 
   # POST /votes
@@ -46,6 +47,6 @@ class VotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def vote_params
-      params.fetch(:vote, {})
+      params.require(:vote).permit(:candidate_id,:ballot_id)
     end
 end

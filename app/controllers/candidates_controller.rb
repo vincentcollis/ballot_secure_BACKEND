@@ -10,7 +10,8 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1
   def show
-    render json: @candidate
+    serializer = CandidateSerializer.new(@candidate)
+    render json: serializer.serializable_hash
   end
 
   # POST /candidates
@@ -46,6 +47,10 @@ class CandidatesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def candidate_params
-      params.fetch(:candidate, {})
+      params.require(:candidate).permit(
+        :name,
+        :position
+      )
     end
+    
 end

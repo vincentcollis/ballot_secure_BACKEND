@@ -2,9 +2,12 @@ class VoteSerializer
   include FastJsonapi::ObjectSerializer
   attributes :candidate_id, :ballot_id
 
+  attributes :name do |ele|
+      ele.candidate.name
+  end
 
-  attributes :name do |object|
-      object.candidate.name
+  attributes :position do |ele|
+    ele.candidate.position
   end
 
 end

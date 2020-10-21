@@ -10,7 +10,8 @@ class RegisteredVotersController < ApplicationController
 
   # GET /registered_voters/1
   def show
-    render json: @registered_voter
+    serializer = VoterSerializer.new(@registered_voter)
+    render json: serializer.serializable_hash
   end
 
   # POST /registered_voters
@@ -46,6 +47,11 @@ class RegisteredVotersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def registered_voter_params
-      params.fetch(:registered_voter, {})
+      params.require(:voter).permit(
+        :first_name,
+        :last_name,
+        :dob,
+        :city
+      )
     end
 end

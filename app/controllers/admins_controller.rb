@@ -10,7 +10,9 @@ class AdminsController < ApplicationController
 
   # GET /admins/1
   def show
-    render json: @admin
+    
+    serializer = AdminSerializer.new(@admin)
+    render json: serializer.serializable_hash
   end
 
   # POST /admins
@@ -46,6 +48,6 @@ class AdminsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def admin_params
-      params.fetch(:admin, {})
+      params.require(:admin).permit(:username, :password)
     end
 end

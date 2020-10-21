@@ -8,7 +8,7 @@
 
 require 'faker'
 require 'csv'
-CSV.foreach(Rails.root.join('../voterfile_backend/lib/test_data.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('/Users/vince/Development/Flatiron/Ballot_Secure/ballot_secure_BACKEND/db/data_source/test_data.csv'), headers: true) do |row|
 # CSV.foreach(Rails.root.join('../voterfile_backend/lib/NY_Voter_data.csv'), headers: true) do |row|
 
   RegisteredVoter.create({
