@@ -8,29 +8,28 @@
 
 require 'faker'
 require 'csv'
-# CSV.foreach(Rails.root.join('/Users/vince/Development/Flatiron/Ballot_Secure/ballot_secure_BACKEND/db/data_source/test_data.csv'), headers: true) do |row|
-    CSV.foreach(Rails.root.join('/Users/vince/Desktop/ballot_secure/data.csv'), headers: true) do |row|
-    
+
+CSV.foreach(Rails.root.join('/Users/vince/Desktop/ballot_secure/data.csv'), headers: true) do |row|    
 # CSV.foreach(Rails.root.join('../voterfile_backend/lib/NY_Voter_data.csv'), headers: true) do |row|
 
   RegisteredVoter.create({
-    lastname: row[0],
-    firstname: row[1],
-    housenumber: row[2],
-    streetname: row[3],
-    city: row[4],
-    zip5: row[5],
-    zip4: row[6],
-    dob: row[7],
-    gender: row[8],
-    politicalparty: row[9],
-    countycode: row[10],
-    electiondistrict: row[11],
-    legislativedistrict: row[12],
-    ward: row[13],
-    congressionaldistrict: row[14],
-    senatedistrict: row[15],
-    assemblydistrict: row[16],
+    lastname: row[1],
+    firstname: row[2],
+    housenumber: row[3],
+    streetname: row[4],
+    city: row[5],
+    zip5: row[6],
+    zip4: row[7],
+    dob: row[8],
+    gender: row[9],
+    politicalparty: row[10],
+    countycode: row[11],
+    electiondistrict: row[12],
+    legislativedistrict: row[13],
+    ward: row[14],
+    congressionaldistrict: row[15],
+    senatedistrict: row[16],
+    assemblydistrict: row[17],
   })
 end
 
